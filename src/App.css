@@ -1,0 +1,626 @@
+/* ==========================================================
+   🌌 PREMIUM SAAS DESIGN SYSTEM & PROFESSIONAL APPLAYOUT
+   ========================================================== */
+
+:root {
+  /* 🌑 Deep Layered Space Backgrounds */
+  --bg-0: #030712;
+  --bg-1: #080f25;
+  --bg-2: #0f172a;
+  --bg-3: #1e293b;
+  --glass-bg: rgba(15, 23, 42, 0.65);
+  --glass-morph: blur(14px);
+
+  /* 🎨 Core Brand Core Identity */
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-glow: rgba(99, 102, 241, 0.25);
+
+  /* 🌈 High-Fidelity Accent System */
+  --cyan: #06b6d4;
+  --green: #10b981;
+  --red: #f43f5e;
+  --yellow: #f59e0b;
+
+  /* 📝 Typography Hierarchy */
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --soft: #64748b;
+
+  /* 🧱 Ultra-Clean Borders */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-focus: rgba(99, 102, 241, 0.4);
+
+  /* 🌫️ Shadow Elevations */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 12px 24px -4px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+
+  /* ✨ Physical Light Radiance */
+  --glow-primary: 0 0 25px rgba(99, 102, 241, 0.3);
+  --glow-green: 0 0 20px rgba(16, 185, 129, 0.2);
+  --glow-red: 0 0 20px rgba(244, 63, 94, 0.2);
+
+  /* 📐 Structural Geometry */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* ⚡ Kinematics / High Performance Easing */
+  --spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================
+   🌍 GLOBAL INITIALIZATION & CANVAS
+   ========================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: 
+    radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.15), transparent 45%),
+    radial-gradient(circle at 90% 15%, rgba(6, 182, 212, 0.1), transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.04), transparent 50%),
+    var(--bg-0);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================
+   🧭 LAYOUT FOUNDATION
+   ========================================================== */
+/* Update your layout container to explicitly take full space without squishing */
+.layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-main, #0b0f19);
+}
+
+/* Ensure the sidebar width is strictly enforced and doesn't push the right side layout */
+.sidebar {
+  width: 260px;          /* Clean, uniform sidebar width */
+  min-width: 260px;      /* Enforces that the sidebar never shrinks or squishes your main area */
+  background-color: var(--bg-sidebar, #0f172a);
+  border-right: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100%;
+}
+
+/* Clean up the main content panel to let it occupy all remaining horizontal viewport space */
+.main {
+  flex: 1;               /* Dynamically scales to fill up 100% of the remaining screen layout */
+  padding: 40px;         /* Uniform structural breathing space on all sides */
+  overflow-y: auto;      /* Allows scrolling within the panel context only */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;           /* Fully expands to take up the right-hand panel area */
+}
+
+/* ==========================================================
+   📌 DESKTOP SIDEBAR
+   ========================================================== */
+
+.sidebar {
+  width: 270px;
+  background: linear-gradient(180deg, #070b19 0%, #03050d 100%);
+  border-right: 1px solid var(--border);
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #fff, var(--muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--spring);
+  border: 1px solid transparent;
+}
+
+.menu p:hover {
+  background: rgba(99, 102, 241, 0.08);
+  color: #fff;
+  border-color: rgba(99, 102, 241, 0.15);
+  transform: translateX(6px);
+}
+
+.menu p.active {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0.03) 100%);
+  color: var(--primary);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: inset 3px 0 0 var(--primary);
+  font-weight: 600;
+}
+
+.menu p.logout {
+  color: var(--soft);
+  margin-top: auto;
+}
+
+.menu p.logout:hover {
+  background: rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.15);
+  color: var(--red);
+}
+
+/* ==========================================================
+   🧠 CONTAINER UI & HEADER SHELVES
+   ========================================================== */
+
+.topbar {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-morph);
+  -webkit-backdrop-filter: var(--glass-morph);
+  border: 1px solid var(--border);
+  padding: 20px 28px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.topbar h1 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* ==========================================================
+   📦 HIGH-POLISH METRIC CARDS GRID
+   ========================================================== */
+
+.cards, .summaryCards, .reportGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.card, .reportCard {
+  background: linear-gradient(145deg, rgba(20, 30, 55, 0.6), rgba(10, 16, 32, 0.6));
+  backdrop-filter: var(--glass-morph);
+  -webkit-backdrop-filter: var(--glass-morph);
+  border: 1px solid var(--border);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--spring);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.card::before, .reportCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255,255,255,0.02), transparent);
+  pointer-events: none;
+}
+
+.card:hover, .reportCard:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+
+.card h2, .reportCard h2 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.card p, .reportCard p {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Accent Borders Map Rules */
+.card.green, .reportCard.green { border-left: 4px solid var(--green); }
+.card.green h2, .reportCard.green h2 { color: var(--green); }
+.card.green:hover { border-color: var(--green); box-shadow: var(--shadow-lg), var(--glow-green); }
+
+.card.red, .reportCard.red { border-left: 4px solid var(--red); }
+.card.red h2, .reportCard.red h2 { color: var(--red); }
+.card.red:hover { border-color: var(--red); box-shadow: var(--shadow-lg), var(--glow-red); }
+
+.card.blue, .reportCard.blue { border-left: 4px solid var(--cyan); }
+.card.blue h2, .reportCard.blue h2 { color: var(--cyan); }
+
+/* ==========================================================
+   🧾 APPLICATION CONTROL PANEL & TOOLBARS
+   ========================================================== */
+
+.toolbar, .inputBox {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+input, select {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.6);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  transition: var(--smooth);
+}
+
+input { flex: 1; }
+select { min-width: 160px; cursor: pointer; }
+
+input:focus, select:focus {
+  border-color: var(--primary);
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15), var(--glow-primary);
+}
+
+/* ==========================================================
+   🔘 CORE INTERACTIVE ACTIONS (BUTTONS)
+   ========================================================== */
+
+button, .markAllBtn {
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  cursor: pointer;
+  transition: var(--spring);
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+button:hover, .markAllBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3), var(--glow-primary);
+}
+
+button:active, .markAllBtn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.markAllBtn {
+  background: linear-gradient(135deg, var(--green), #059669);
+  width: max-content;
+}
+.markAllBtn:hover {
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3), var(--glow-green);
+}
+
+/* ==========================================================
+   📋 DATA VIEWS & ROW CONTEXTS
+   ========================================================== */
+
+.table, .reportTable {
+  background: rgba(10, 16, 32, 0.4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row, .reportRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--border);
+  transition: var(--spring);
+  will-change: transform, opacity;
+}
+
+/* Advanced Entrance Cascade Stagger Simulation */
+.row {
+  animation: hardwareFadeSlide 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.row:hover, .reportRow:hover {
+  transform: translateY(-2px) scale(1.005);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(20, 30, 55, 0.6);
+  box-shadow: var(--shadow-md);
+}
+
+.studentName {
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ==========================================================
+   🟢 COMPONENT STATUS INDICATORS & PROGRESS TRACKS
+   ========================================================== */
+
+.present, .greenText {
+  color: var(--green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.absent, .redText {
+  color: var(--red);
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.15);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 12px;
+  background: var(--bg-3);
+  border-radius: 999px;
+  padding: 2px;
+  border: 1px solid var(--border);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), #34d399);
+  border-radius: 999px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--glow-green);
+}
+
+.trash {
+  color: var(--soft);
+  cursor: pointer;
+  transition: var(--smooth);
+}
+.trash:hover {
+  color: var(--red);
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.5));
+}
+
+.saveStatus {
+  font-size: 13px;
+  color: var(--soft);
+}
+
+/* ==========================================================
+   🔐 LUXURY DESIGNED LOGIN CONTAINER
+   ========================================================== */
+
+.loginPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #0f172a 0%, #030712 100%);
+}
+
+.loginBox {
+  width: 380px;
+  padding: 44px 36px;
+  background: rgba(10, 16, 32, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-lg), 0 0 80px rgba(99, 102, 241, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.loginBox h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.loginBox input {
+  width: 100%;
+}
+
+/* ==========================================================
+   📱 ADAPTIVE MOBILE & NAVIGATION LAYOUT ENGINE
+   ========================================================== */
+
+.mobileNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  background: rgba(5, 8, 20, 0.85);
+  backdrop-filter: var(--glass-morph);
+  -webkit-backdrop-filter: var(--glass-morph);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 99;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+  display: none;
+}
+
+.mobileNavItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--soft);
+  cursor: pointer;
+  transition: var(--smooth);
+}
+
+.mobileNavItem svg { font-size: 20px; }
+.mobileNavItem:hover, .mobileNavItem.active {
+  color: var(--primary);
+  text-shadow: var(--glow-primary);
+}
+
+.mobileReportsBtn {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 12px 28px rgba(99, 102, 241, 0.4);
+  cursor: pointer;
+  z-index: 98;
+  display: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--spring);
+}
+.mobileReportsBtn:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Unified Layout Media Queries Core Rule */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .mobileNav { display: flex; }
+  .mobileReportsBtn { display: block; }
+  
+  .main {
+    padding: 20px;
+    padding-bottom: 110px; /* Secure clearance space for Mobile Fixed Navigation Dock */
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .toolbar, .inputBox {
+    flex-direction: column;
+  }
+
+  select, button, .markAllBtn {
+    width: 100%;
+  }
+
+  .row, .reportRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ==========================================================
+   ⚡ HIGH PERFORMANCE SYSTEM KEYFRAMES
+   ========================================================== */
+
+@keyframes hardwareFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+/* ===== Desktop Alignment Fix ===== */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.sidebar {
+  width: 260px !important;
+  min-width: 260px !important;
+  flex-shrink: 0;
+}
+
+.main {
+  flex: 1 !important;
+  width: calc(100vw - 260px) !important;
+  max-width: calc(100vw - 260px) !important;
+  margin-left: 0 !important;
+  padding: 40px;
+  overflow-x: auto;
+}
+
+/* Shift content slightly left */
+@media (min-width: 769px) {
+  .main {
+    padding-left: 20px !important;
+  }
+}
